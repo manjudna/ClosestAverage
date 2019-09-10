@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace ClosestAverage
@@ -33,7 +34,7 @@ namespace ClosestAverage
                 }
             }
 
-            Console.WriteLine("The closest average for given array is: " + ClosestAve(arr));
+            Console.WriteLine("The closest average for given array is: " + ClosestAverage(arr));
             Console.ReadLine();
 
         }
@@ -45,9 +46,33 @@ namespace ClosestAverage
         /// <returns></returns>
         private static int ClosestAve(int[] arr)
         {
-            var av = arr.Sum() / arr.Length;
+            var av = arr.Sum() / arr.Length;           
             var nearest = arr.OrderBy(x => Math.Abs((long)x - av)).First();
             return nearest;
+        }
+
+
+        /// <summary>
+        /// Finds and returns the closest ave for given array- For loop
+        /// </summary>
+        /// <param name="arr"></param>
+        /// <returns></returns>
+        private static int ClosestAverage(int[] arr)
+        {
+            var av = arr.Sum() / arr.Length;
+
+            int closest = arr[0];
+
+            for (int i = 1; i < arr.Length; i++)
+            {
+                if( Math.Abs(av-arr[i]) < Math.Abs(av - closest))
+
+                {
+                    closest = arr[i];
+                }
+            }
+                      
+            return closest;
         }
     }
 }
