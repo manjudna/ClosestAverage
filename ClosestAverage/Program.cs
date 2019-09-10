@@ -65,10 +65,14 @@ namespace ClosestAverage
 
             for (int i = 1; i < arr.Length; i++)
             {
-                if( Math.Abs(av-arr[i]) < Math.Abs(av - closest))
+                var v1 = Math.Abs(av - arr[i]);
+                var v2 = Math.Abs(av - closest);
+
+                if ( Math.Abs(av-arr[i]) < Math.Abs(av - closest))
 
                 {
                     closest = arr[i];
+                    break;
                 }
             }
                       
