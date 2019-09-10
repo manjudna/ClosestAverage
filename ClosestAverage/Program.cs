@@ -8,18 +8,34 @@ namespace ClosestAverage
         static void Main(string[] args)
         {
             Console.WriteLine("Enter the lenght of the array: ");
-            int len=Convert.ToInt32(Console.ReadLine());
-
+            int len = Convert.ToInt32(Console.ReadLine());
+            if (len <= 0)
+            {
+                Console.WriteLine("Array lenght should be greater than 0");
+                return;
+            }
             int[] arr = new int[len];
 
             for (int i = 0; i < arr.Length; i++)
             {
                 Console.Write("Enter number:\t");
-                arr[i] = Convert.ToInt32(Console.ReadLine());
-            }         
-            
+                var input=Console.ReadLine();
+                int arrVal;
+                bool res = int.TryParse(input, out arrVal);
+                if (!res)
+                {
+                    Console.WriteLine("Enter integer value:");
+                    return;
+                }
+                else
+                {
+                    arr[i] = arrVal;
+                }
+            }
+
             Console.WriteLine("The closest average for given array is: " + ClosestAve(arr));
             Console.ReadLine();
+
         }
 
         /// <summary>
